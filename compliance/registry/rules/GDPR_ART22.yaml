@@ -1,0 +1,39 @@
+meta:
+  regulation: GDPR
+  article: "22"
+  version: "2016/679"
+  effective_from: "2018-05-25"
+  source_type: obp_curated
+  authoritative_source: https://eur-lex.europa.eu/eli/reg/2016/679/oj
+  description: GDPR Article 22 — Automated individual decision-making
+
+rules:
+  - id: GDPR_ART22_AUTOMATED
+    name: Solely automated decision-making with legal or significant effects
+    name_ja: 法的効果を持つ完全自動意思決定
+    axis: [AXIS-2]
+    axis_proximity: adjacent
+    tags_all: [automated_decision, binding_decision]
+    tags_any: [personal_data]
+    tags_exclude: []
+    cal: CAL-3
+    source_type: obp_curated
+    regulation: GDPR
+    regulation_article: "22(1)"
+    effective_from: "2018-05-25"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: GDPR_ART22_PROFILING
+    name: Profiling with significant effects on individuals
+    name_ja: 個人に重大な影響を与えるプロファイリング
+    axis: [AXIS-2]
+    axis_proximity: adjacent
+    tags_all: [profiling, automated_decision]
+    tags_any: [personal_data, sensitive_data]
+    tags_exclude: []
+    cal: CAL-3
+    source_type: obp_curated
+    regulation: GDPR
+    regulation_article: "22(1)"
+    effective_from: "2018-05-25"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]

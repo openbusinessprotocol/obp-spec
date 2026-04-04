@@ -1,0 +1,84 @@
+meta:
+  regulation: EU_AI_ACT
+  article: "Annex III"
+  version: "2024/1689"
+  effective_from: "2026-08-02"
+  source_type: obp_curated
+  authoritative_source: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+  description: EU AI Act Annex III — High-risk AI systems (CAL-3)
+
+rules:
+  - id: ANNEX3_HIRING
+    name: Automated employment and worker management decisions
+    name_ja: 採用・人事評価の自動化
+    axis: [AXIS-2]
+    axis_proximity: adjacent
+    tags_all: [hiring, automated_decision]
+    tags_any: [ranking_persons, classification_persons, recommendation_action]
+    tags_exclude: []
+    cal: CAL-3
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "Annex III(4)"
+    effective_from: "2026-08-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: ANNEX3_CREDIT
+    name: Credit scoring and creditworthiness assessment
+    name_ja: 信用スコアリング・与信審査
+    axis: [AXIS-2]
+    axis_proximity: adjacent
+    tags_all: [credit_assessment, automated_decision]
+    tags_any: [financial_data, binding_decision]
+    tags_exclude: []
+    cal: CAL-3
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "Annex III(5)"
+    effective_from: "2026-08-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: ANNEX3_EDUCATION
+    name: Educational access control and automated assessment
+    name_ja: 教育アクセス制御・成績自動評価
+    axis: [AXIS-2]
+    axis_proximity: adjacent
+    tags_all: [education, automated_decision]
+    tags_any: [binding_decision, ranking_persons]
+    tags_exclude: []
+    cal: CAL-3
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "Annex III(3)"
+    effective_from: "2026-08-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: ANNEX3_HEALTHCARE
+    name: Medical risk assessment and clinical pathway recommendation
+    name_ja: 医療リスク判定・臨床経路推薦
+    axis: [AXIS-2]
+    axis_proximity: adjacent
+    tags_all: [healthcare_decision, automated_decision]
+    tags_any: [recommendation_action, binding_decision]
+    tags_exclude: []
+    cal: CAL-3
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "Annex III(5)"
+    effective_from: "2026-08-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: ANNEX3_PUBLIC_SERVICE
+    name: Access to public services and benefits
+    name_ja: 公共サービス・給付へのアクセス判定
+    axis: [AXIS-2]
+    axis_proximity: adjacent
+    tags_all: [public_service, automated_decision]
+    tags_any: [binding_decision, ranking_persons]
+    tags_exclude: []
+    cal: CAL-3
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "Annex III(5)"
+    effective_from: "2026-08-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]

@@ -1,0 +1,42 @@
+meta:
+  regulation: EU_AI_ACT
+  article: "50"
+  version: "2024/1689"
+  effective_from: "2026-08-02"
+  source_type: obp_curated
+  authoritative_source: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+  description: EU AI Act Article 50 — Transparency obligations (CAL-1)
+  note: |
+    CAL-1 = AXIS-2 予防的透明性要件。AXIS 直接違反ではなく責任帰属の明確化を要求。
+    委譲は成立するが、出力への開示マーキングが必要。
+
+rules:
+  - id: ART50_CHATBOT
+    name: Disclosure of AI system in direct human interaction
+    name_ja: AIシステムとのインタラクション開示義務
+    axis: [AXIS-2]
+    axis_proximity: adjacent
+    tags_all: [content_generation]
+    tags_any: []
+    tags_exclude: []
+    cal: CAL-1
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "50(1)"
+    effective_from: "2026-08-02"
+    applies_to_wf_types: [ai]
+
+  - id: ART50_DEEPFAKE
+    name: Disclosure of AI-generated or manipulated content
+    name_ja: AI生成・操作コンテンツの開示義務
+    axis: [AXIS-2]
+    axis_proximity: adjacent
+    tags_all: [synthetic_identity]
+    tags_any: []
+    tags_exclude: []
+    cal: CAL-1
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "50(4)"
+    effective_from: "2026-08-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]

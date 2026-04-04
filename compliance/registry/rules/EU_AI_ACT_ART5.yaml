@@ -1,0 +1,129 @@
+meta:
+  regulation: EU_AI_ACT
+  article: "5"
+  version: "2024/1689"
+  effective_from: "2025-02-02"
+  source_type: obp_curated
+  authoritative_source: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+  description: EU AI Act Article 5 — Prohibited AI practices (CAL-4)
+
+rules:
+  - id: ART5_1_A
+    name: Harmful manipulation or deception
+    name_ja: 有害な操作・欺瞞
+    axis: [AXIS-1, AXIS-2]
+    axis_proximity: direct
+    tags_all: [manipulation]
+    tags_any: [personal_data, behavioral_pattern]
+    tags_exclude: []
+    cal: CAL-4
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "5(1)(a)"
+    effective_from: "2025-02-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: ART5_1_B
+    name: Exploitation of vulnerabilities
+    name_ja: 脆弱性の悪用
+    axis: [AXIS-1]
+    axis_proximity: direct
+    tags_all: [vulnerability_exploit]
+    tags_any: []
+    tags_exclude: []
+    cal: CAL-4
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "5(1)(b)"
+    effective_from: "2025-02-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: ART5_1_C
+    name: Social scoring by public authorities
+    name_ja: 公的機関による社会的スコアリング
+    axis: [AXIS-2]
+    axis_proximity: direct
+    tags_all: [social_scoring]
+    tags_any: [personal_data, behavioral_pattern]
+    tags_exclude: []
+    cal: CAL-4
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "5(1)(c)"
+    effective_from: "2025-02-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: ART5_1_D
+    name: Individual criminal risk prediction
+    name_ja: 個人の犯罪リスク予測
+    axis: [AXIS-2]
+    axis_proximity: direct
+    tags_all: [predictive_crime]
+    tags_any: [personal_data]
+    tags_exclude: []
+    cal: CAL-4
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "5(1)(d)"
+    effective_from: "2025-02-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: ART5_1_E
+    name: Indiscriminate facial recognition database scraping
+    name_ja: 顔認識データベースの無差別スクレイピング
+    axis: [AXIS-1, AXIS-2]
+    axis_proximity: direct
+    tags_all: [face_recognition, data_harvesting]
+    tags_any: [mass_scale, profiling]
+    tags_exclude: []
+    cal: CAL-4
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "5(1)(e)"
+    effective_from: "2025-02-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: ART5_1_F
+    name: Emotion recognition in workplace or education
+    name_ja: 職場・教育機関での感情認識
+    axis: [AXIS-1]
+    axis_proximity: direct
+    tags_all: [emotion_inference]
+    tags_any: [workplace, education]
+    tags_exclude: []
+    cal: CAL-4
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "5(1)(f)"
+    effective_from: "2025-02-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: ART5_1_G
+    name: Biometric categorisation inferring protected characteristics
+    name_ja: 保護特性を推測する生体認証分類
+    axis: [AXIS-1, AXIS-2]
+    axis_proximity: direct
+    tags_all: [biometric, sensitive_data, classification_persons]
+    tags_any: []
+    tags_exclude: []
+    cal: CAL-4
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "5(1)(g)"
+    effective_from: "2025-02-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: ART5_1_H
+    name: Real-time remote biometric identification in public spaces
+    name_ja: 公共空間のリアルタイム遠隔生体認証
+    axis: [AXIS-1, AXIS-2]
+    axis_proximity: direct
+    tags_all: [face_recognition, real_time, public_space]
+    tags_any: []
+    tags_exclude: [law_enforcement]
+    cal: CAL-4
+    source_type: obp_curated
+    regulation: EU_AI_ACT
+    regulation_article: "5(1)(h)"
+    effective_from: "2025-02-02"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]

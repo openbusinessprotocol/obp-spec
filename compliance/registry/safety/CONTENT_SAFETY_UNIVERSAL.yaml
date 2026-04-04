@@ -1,0 +1,41 @@
+meta:
+  scope: universal
+  source_type: obp_curated
+  description: |
+    文脈・WF種別を問わず常時適用するコンテンツ安全フィルター。
+    AXIS-1（不可逆性の絶対閾値）の直接違反に相当する。
+    ws.output_safety_context による緩和は不可。解除不可。
+
+filters:
+  - id: CSAM
+    name: Child Sexual Abuse Material
+    name_ja: 児童性的虐待コンテンツ
+    axis: [AXIS-1]
+    axis_proximity: direct
+    applies_to: [image, video, text, audio]
+    activation: always
+    source_type: obp_curated
+    action: block_and_report
+    provider_expected: true
+
+  - id: TERRORISM_INCITEMENT
+    name: Terrorism incitement and glorification
+    name_ja: テロ煽動・美化コンテンツ
+    axis: [AXIS-1]
+    axis_proximity: direct
+    applies_to: [text, image, video, audio]
+    activation: always
+    source_type: obp_curated
+    action: block_and_report
+    provider_expected: true
+
+  - id: WEAPONS_MASS_DESTRUCTION
+    name: Instructions for weapons of mass destruction
+    name_ja: 大量破壊兵器の製造指示
+    axis: [AXIS-1]
+    axis_proximity: direct
+    applies_to: [text]
+    activation: always
+    source_type: obp_curated
+    action: block_and_report
+    provider_expected: true

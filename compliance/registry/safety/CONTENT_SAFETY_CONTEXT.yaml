@@ -1,0 +1,60 @@
+meta:
+  scope: context_dependent
+  source_type: obp_curated
+  description: |
+    ws.output_safety_context と wf.ocs_enabled の組み合わせで適用が変わるフィルター。
+    AXIS-1 隣接領域（axis_proximity: adjacent）。
+    occ.risk_appetite / ws.output_safety_context による有効化・無効化が可能。
+
+filters:
+  - id: GRAPHIC_VIOLENCE
+    name: Graphic violence
+    name_ja: 過激な暴力描写
+    axis: [AXIS-1]
+    axis_proximity: adjacent
+    applies_to: [image, video]
+    activation: context_dependent
+    activation_contexts: [default, education, children]
+    deactivation_contexts: [adult_verified, medical_clinical]
+    source_type: obp_curated
+    action: block
+    provider_expected: true
+
+  - id: EXPLICIT_SEXUAL
+    name: Explicit sexual content
+    name_ja: 性的に露骨なコンテンツ
+    axis: [AXIS-1]
+    axis_proximity: adjacent
+    applies_to: [image, video, text]
+    activation: context_dependent
+    activation_contexts: [default, education, children]
+    deactivation_contexts: [adult_verified]
+    source_type: obp_curated
+    action: block
+    provider_expected: true
+
+  - id: HATE_SPEECH
+    name: Hate speech targeting protected characteristics
+    name_ja: 保護特性に基づくヘイトスピーチ
+    axis: [AXIS-1]
+    axis_proximity: adjacent
+    applies_to: [text, audio]
+    activation: context_dependent
+    activation_contexts: [default, education, children]
+    deactivation_contexts: []
+    source_type: obp_curated
+    action: block
+    provider_expected: true
+
+  - id: AGE_INAPPROPRIATE
+    name: Age-inappropriate content for minors
+    name_ja: 未成年者への年齢不適切コンテンツ
+    axis: [AXIS-1]
+    axis_proximity: adjacent
+    applies_to: [image, video, text]
+    activation: context_dependent
+    activation_contexts: [children]
+    deactivation_contexts: []
+    source_type: obp_curated
+    action: block
+    provider_expected: false

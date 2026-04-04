@@ -1,0 +1,130 @@
+meta:
+  version: "0.1.0"
+  updated: "2026-04-03"
+  source_type: obp_curated
+  description: |
+    OBP compliance_tags 正規定義。
+    ツールが触れる能力ドメインを宣言するための標準タグ語彙。
+    WF 内の全ツールタグの和集合が prohibited_act_rules / output_safety_filters の評価入力となる。
+
+categories:
+  data_type:
+    description: ツールが処理するデータの種別
+    tags:
+      - id: personal_data
+        name: Personal identifiable data
+        name_ja: 個人を識別できるデータ（PII）
+      - id: sensitive_data
+        name: Special category personal data
+        name_ja: 要配慮個人情報（人種・宗教・政治・性的指向・健康）
+      - id: biometric
+        name: Biometric data
+        name_ja: 生体データ（指紋・虹彩・静脈）
+      - id: face_recognition
+        name: Facial recognition and face data processing
+        name_ja: 顔認識・顔データ処理
+      - id: emotion_inference
+        name: Emotion and psychological state inference
+        name_ja: 感情・心理状態の推定
+      - id: voice_analysis
+        name: Voice and speech analysis
+        name_ja: 音声・口調の分析
+      - id: behavioral_pattern
+        name: Behavioral pattern analysis
+        name_ja: 行動パターン（閲覧・移動・購買）
+      - id: health_data
+        name: Medical and health data
+        name_ja: 医療・健康データ
+      - id: financial_data
+        name: Financial and credit data
+        name_ja: 与信・金融データ
+      - id: location_data
+        name: Location and movement data
+        name_ja: 位置情報
+
+  usage_context:
+    description: ツールが動作する利用文脈
+    tags:
+      - id: workplace
+        name: Employee and workplace context
+        name_ja: 従業員・職場環境に関わる処理
+      - id: education
+        name: Student and educational institution context
+        name_ja: 学生・教育機関に関わる処理
+      - id: public_space
+        name: Public space context
+        name_ja: 公共空間での処理
+      - id: law_enforcement
+        name: Law enforcement and judicial context
+        name_ja: 法執行・司法に関わる処理
+      - id: hiring
+        name: Recruitment and HR evaluation context
+        name_ja: 採用・人事評価に関わる処理
+      - id: credit_assessment
+        name: Credit and loan assessment context
+        name_ja: 与信・ローン審査に関わる処理
+      - id: housing
+        name: Housing and tenant screening context
+        name_ja: 住居・テナント審査に関わる処理
+      - id: public_service
+        name: Public service access context
+        name_ja: 公共サービスへのアクセス判定
+      - id: healthcare_decision
+        name: Medical decision and patient triage context
+        name_ja: 医療判断・患者トリアージ
+      - id: border_control
+        name: Immigration and border control context
+        name_ja: 入国・国境管理
+
+  processing_nature:
+    description: ツールの処理性質
+    tags:
+      - id: real_time
+        name: Real-time processing
+        name_ja: リアルタイム処理（バッチでない）
+      - id: automated_decision
+        name: Automated decision without human review
+        name_ja: 人間レビューなしの自動意思決定
+      - id: mass_scale
+        name: Mass-scale or indiscriminate processing
+        name_ja: 大規模・不特定多数への処理
+      - id: profiling
+        name: Individual profile construction
+        name_ja: 個人プロファイル構築
+      - id: social_scoring
+        name: Social behaviour scoring
+        name_ja: 社会的行動のスコアリング
+      - id: predictive_crime
+        name: Criminal risk and behaviour prediction
+        name_ja: 犯罪リスク・行動予測
+      - id: manipulation
+        name: Influence on behaviour and decision-making
+        name_ja: 行動・意思決定への影響・操作
+      - id: vulnerability_exploit
+        name: Exploitation of vulnerability
+        name_ja: 脆弱性（認知・経済・年齢等）の悪用
+      - id: data_harvesting
+        name: Indiscriminate large-scale data collection
+        name_ja: 大量データの無差別収集
+
+  output_type:
+    description: ツールの出力種別
+    tags:
+      - id: ranking_persons
+        name: Ranking or scoring of individuals
+        name_ja: 人物のランキング・スコアリング
+      - id: classification_persons
+        name: Classification of individuals
+        name_ja: 人物の分類
+      - id: recommendation_action
+        name: Action recommendation for individuals
+        name_ja: 人物への処遇推薦（採用・拒否等）
+      - id: binding_decision
+        name: Decision with legal or significant effect
+        name_ja: 法的効果を持つ拘束的決定
+      - id: content_generation
+        name: AI-generated content
+        name_ja: AI生成コンテンツ
+      - id: synthetic_identity
+        name: Synthetic voice, video or deepfake
+        name_ja: 合成音声・映像・ディープフェイク

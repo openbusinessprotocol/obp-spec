@@ -1,0 +1,39 @@
+meta:
+  regulation: JP_PIPA
+  article: "2022改正"
+  version: "2022"
+  effective_from: "2022-04-01"
+  source_type: obp_curated
+  authoritative_source: https://www.ppc.go.jp/personalinfo/legal/
+  description: 日本 個人情報保護法（2022年改正）— 要配慮個人情報・自動化処理
+
+rules:
+  - id: JP_PIPA_SENSITIVE
+    name: Processing of sensitive personal information
+    name_ja: 要配慮個人情報の処理
+    axis: [AXIS-2]
+    axis_proximity: adjacent
+    tags_all: [sensitive_data]
+    tags_any: [personal_data, automated_decision]
+    tags_exclude: []
+    cal: CAL-3
+    source_type: obp_curated
+    regulation: JP_PIPA
+    regulation_article: "2条3項"
+    effective_from: "2022-04-01"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
+
+  - id: JP_PIPA_THIRD_PARTY
+    name: Third-party provision of personal data without consent
+    name_ja: 本人同意なき個人データの第三者提供
+    axis: [AXIS-2]
+    axis_proximity: adjacent
+    tags_all: [personal_data, data_harvesting]
+    tags_any: []
+    tags_exclude: []
+    cal: CAL-3
+    source_type: obp_curated
+    regulation: JP_PIPA
+    regulation_article: "27条"
+    effective_from: "2022-04-01"
+    applies_to_wf_types: [ai, mechanical, scheduled, webhook]
