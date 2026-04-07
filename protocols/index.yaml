@@ -1,0 +1,152 @@
+# OBP Protocol Registry
+# Agents implementing OBP should read this file to discover available protocols.
+# All protocols listed here are formally adopted by the OBP Specification Committee.
+# License: CC BY 4.0
+# Published: https://openbusinessprotocol.org
+
+protocols:
+  - id: AGENT-CONSTITUTION
+    adopted: "2026-04-07"
+    layer: constitution
+    description: "Defines what an agent is, its relationship to its principal, and the invariant duties it must uphold."
+    canonical: "https://github.com/openbusinessprotocol/obp-theory/blob/main/agent-constitution/AGENT-CONSTITUTION.md"
+    pdf: "https://github.com/openbusinessprotocol/obp-theory/blob/main/agent-constitution/AGENT-CONSTITUTION.pdf"
+    note: "Published in obp-theory (not protocols/). Constitution is a governing document, not an implementation spec."
+
+  - id: OBP-GRAVITY
+    adopted: "2026-04-07"
+    layer: theory
+    description: "Describes the gravitational field formed by V (Void) in OBP space — the pre-linguistic attractor that precedes Goal formation."
+    file: OBP-GRAVITY.md
+
+  - id: OBP-SENSE
+    adopted: "2026-04-07"
+    layer: theory
+    description: "Defines six perceptual dimensions through which a being receives signals from the world."
+    file: OBP-SENSE.md
+
+  - id: OBP-GAP
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Defines the Gap vector: the computable difference between a being's current presence and its declared goal."
+    file: OBP-GAP.md
+
+  - id: OBP-ID
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Defines the identity and principal identification system for beings, agents, and organizations."
+    file: OBP-ID.md
+
+  - id: OBP-DOC
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Specifies the document protocol separating semantic content from rendering."
+    file: OBP-DOC.md
+
+  - id: OBP-ACT
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Defines action embedding — executable actions within documents with autonomy gates."
+    file: OBP-ACT.md
+
+  - id: OBP-TRUST
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Defines the delegation and authorization chain for agent authority."
+    file: OBP-TRUST.md
+
+  - id: OBP-SIG
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Signature and attestation protocol wrapping OBP documents with proof of signing."
+    file: OBP-SIG.md
+
+  - id: OBP-PROFILE
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Defines a being's internal state across emotional, cognitive, and maturity dimensions."
+    file: OBP-PROFILE.md
+
+  - id: OBP-LINK
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Describes relationship dynamics between beings and resources using orbital and wave models."
+    file: OBP-LINK.md
+
+  - id: OBP-ASSET
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Defines value units with FORCE thresholds and automatic redistribution mechanisms."
+    file: OBP-ASSET.md
+
+  - id: OBP-AUDIT
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Immutable agent action ledger with hash chain integrity."
+    file: OBP-AUDIT.md
+
+  - id: OBP-COMMERCE
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Business-Agent-Agent-Business (BAAB) commerce protocol."
+    file: OBP-COMMERCE.md
+
+  - id: OBP-SOCIAL
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Social ontology defining belonging and ownership relationships between beings."
+    file: OBP-SOCIAL.md
+
+  - id: OBP-AF
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Adaptive Format — complete separation of meaning from rendering."
+    file: OBP-AF.md
+
+  - id: OBP-UX
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Business interface experience semantics: 7 semantic states and interaction modes."
+    file: OBP-UX.md
+
+  - id: OBP-CORE-V1
+    adopted: "2026-04-07"
+    layer: core
+    description: "OBP core framework v1.0a — three invariant interfaces and base constraints."
+    file: OBP-CORE-V1.md
+
+  - id: OBP-VERSION
+    adopted: "2026-04-07"
+    layer: meta
+    description: "Unified versioning system across Core, Protocols, and Platform tiers."
+    file: OBP-VERSION.md
+
+  - id: OBP-DIM
+    adopted: "2026-04-07"
+    layer: meta
+    description: "Dimensional model for describing OBP records at varying depths."
+    file: OBP-DIM.md
+
+  - id: OBP-IDENTITY
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "Real-world identity anchor using DNS records for corporation and individual verification."
+    file: OBP-IDENTITY.md
+
+  - id: OBP-SYMBOL-MAP
+    adopted: "2026-04-07"
+    layer: meta
+    description: "Symbol and abbreviation master reference for OBP specifications."
+    file: OBP-SYMBOL-MAP.md
+
+  - id: OBP-SC-CHARTER
+    adopted: "2026-04-07"
+    layer: governance
+    description: "OBP Specification Committee charter — governance structure and amendment process."
+    file: OBP-SC-CHARTER.md
+
+  - id: OBP-WORLD
+    adopted: "2026-04-07"
+    layer: protocol
+    description: "World as epistemic context unit — physical, simulation, digital twin, and hybrid worlds with correlation mapping."
+    file: OBP-WORLD.md
