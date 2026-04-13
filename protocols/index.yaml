@@ -150,3 +150,49 @@ protocols:
     layer: protocol
     description: "World as epistemic context unit — physical, simulation, digital twin, and hybrid worlds with correlation mapping."
     file: OBP-WORLD.md
+
+  - id: OBP-TAXONOMY
+    adopted: "2026-04-13"
+    status: conditional
+    prop: "PROP-006"
+    layer: primitive
+    description: "Ontological classification vocabulary — four genera (being/resource/flow/context), species, variants, and the ext.{provider}.{term} extension namespace."
+    file: OBP-TAXONOMY.md
+    data:
+      - taxonomy/genera.yaml
+      - taxonomy/species.yaml
+      - taxonomy/variants.yaml
+
+  - id: OBP-SEMANTIC-ALIGNMENT
+    adopted: "2026-04-13"
+    status: conditional
+    prop: "PROP-009"
+    layer: primitive
+    description: "Semantic alignment protocol — locale profiles (global/us/ja), external standard references, and override tracking metadata (_version/_overrides_hash)."
+    file: OBP-SEMANTIC-ALIGNMENT.md
+    data:
+      - profiles/schema.yaml
+      - profiles/global.yaml
+      - profiles/us.yaml
+      - profiles/ja.yaml
+
+  - id: OBP-COMMERCE-VOCABULARY
+    adopted: "2026-04-13"
+    status: conditional
+    prop: "PROP-010"
+    layer: vocabulary
+    description: "Commercial state vocabulary — net(qualifier)/gross(qualifier), return, refund, cancelled, delivered. First-class definitions with state transitions."
+    file: OBP-COMMERCE.md
+    data:
+      - vocabulary/commercial-states.yaml
+
+  - id: OBP-COUNTERPARTY
+    adopted: "2026-04-13"
+    status: conditional
+    prop: "PROP-011"
+    layer: protocol
+    description: "B2B counterparty governance protocol — payment cycle, document flow, tax, fees, withholding, KYC. Core schema + locale-specific profile extensions. Privacy-level annotated."
+    file: OBP-COUNTERPARTY.md
+    data:
+      - schemas/counterparty-governance-core.yaml
+      - profiles/ja/counterparty-governance-extension.yaml

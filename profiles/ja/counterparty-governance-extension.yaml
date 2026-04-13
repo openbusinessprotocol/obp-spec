@@ -1,0 +1,81 @@
+# OBP Counterparty Governance — Japan Profile Extension
+# Extends counterparty-governance-core.yaml for Japanese commercial practice.
+# Active when workspace profile = ja (OBP-SEMANTIC-ALIGNMENT).
+# License: CC BY 4.0
+# Adopted: PROP-011 (2026-04-13, conditional)
+
+version: "1.0"
+adopted: "2026-04-13"
+prop: "PROP-011"
+extends: schemas/counterparty-governance-core.yaml
+profile: ja
+
+extensions:
+
+  tax:
+    fields:
+      qualified_invoice_registered:
+        type: boolean
+        description: >
+          Whether the counterparty is registered under Japan's Qualified Invoice
+          system (Tekikaku Seikyusho Hozanho — Consumption Tax Invoice Act).
+          Registered issuers have a T + 13-digit registration number.
+          Affects whether the buyer can claim input tax credits.
+          Reference: National Tax Agency of Japan — Qualified Invoice System.
+        privacy_level: counterparty_shared
+
+      registration_number:
+        type: "string | null"
+        description: >
+          Japan Qualified Invoice registration number.
+          Format: T followed by 13 digits (e.g., T1234567890123).
+          null if not registered.
+          Reference: National Tax Agency Japan — Corporate Number System.
+        privacy_level: counterparty_shared
+
+      reduced_rate_applicable:
+        type: boolean
+        description: >
+          Whether any transactions with this counterparty involve goods or
+          services subject to Japan's reduced consumption tax rate (8%).
+          The standard rate is 10%; reduced rate applies to food and
+          specified newspaper subscriptions.
+          Reference: Japanese Consumption Tax Act.
+        privacy_level: workspace_internal
+
+  fees:
+    fields:
+      wire_transfer_fee_mode:
+        type: "'sender_deduct' | null"
+        description: >
+          Japan-specific wire transfer practice where the sender deducts
+          the bank transfer fee from the remittance amount rather than
+          paying it separately. Common in domestic JP bank transfers.
+          null = not applicable or handled by core transfer_fee_bearer.
+          Reference: Zengin System (Japanese domestic wire transfer network) conventions.
+        privacy_level: workspace_internal
+
+  withholding:
+    fields:
+      rate_reference:
+        type: string
+        description: >
+          The specific Japanese legal provision governing the withholding rate
+          for transactions with this counterparty.
+          Example: "Income Tax Act Article 204" (for freelancers and specific services).
+          The actual rate is specified in the core schema's withholding.rate field.
+          This field provides the legal citation for audit purposes.
+        privacy_level: workspace_internal
+
+  regulatory_compliance:
+    fields:
+      tax_id_type_ja:
+        type: "'my_number' | null"
+        description: >
+          Japan-specific tax identification collected for this counterparty.
+          "my_number" = Individual Number (My Number, 12-digit) for individuals,
+          or Corporate Number (Hojin Bango, 13-digit) for corporations.
+          null = not applicable or not yet collected.
+          Reference: Act on the Use of Numbers to Identify a Specific Individual
+          in Administrative Procedures (My Number Act) / Corporate Number Act.
+        privacy_level: workspace_internal

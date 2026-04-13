@@ -1,0 +1,106 @@
+# OBP Taxonomy — Species
+# Canonical list of OBP species within each genus.
+# Notation: genus.species (dot-separated)
+# For extensions by implementors, see taxonomy/README.md (flow.ext.{provider}.{term})
+# License: CC BY 4.0
+# Adopted: PROP-006 (2026-04-13, conditional)
+
+version: "1.0"
+adopted: "2026-04-13"
+prop: "PROP-006"
+
+species:
+
+  # ── being ──────────────────────────────────────────────────────────
+  - id: being.person
+    definition: A human principal. Exercises Owner Sovereignty.
+
+  - id: being.agent
+    definition: >
+      An AI agent acting on behalf of a principal.
+      Requires flow.delegate to act with authority.
+
+  - id: being.organization
+    definition: >
+      A legal or operational entity comprising multiple beings.
+      Has its own identity and governance boundary.
+
+  # ── resource ───────────────────────────────────────────────────────
+  - id: resource.document
+    definition: >
+      A discrete unit of recorded meaning — text, data, media.
+      Corresponds to OBP-DOC.
+
+  - id: resource.money
+    definition: >
+      A fungible value unit denominated in a currency.
+      Currency code follows ISO 4217 (see OBP-SEMANTIC-ALIGNMENT).
+
+  - id: resource.knowledge
+    definition: An information asset with semantic indexability.
+
+  - id: resource.credential
+    definition: A verifiable claim about a being's identity or capability.
+
+  - id: resource.right
+    definition: >
+      A transferable or licensable entitlement (access right, IP license, etc.).
+
+  - id: resource.matter
+    definition: >
+      Physical goods. The most primitive form of resource.
+      Requires shipment tracking for fulfillment (see flow.commerce).
+
+  # ── flow ───────────────────────────────────────────────────────────
+  - id: flow.task
+    definition: A discrete unit of work with a clear completion criterion.
+
+  - id: flow.schedule
+    definition: A time-bounded event or recurring appointment.
+
+  - id: flow.issue
+    definition: A tracked problem or defect requiring resolution.
+
+  - id: flow.content
+    definition: A content creation or publishing workflow.
+
+  - id: flow.commerce
+    definition: >
+      A structured business transaction between two principals (BAAB).
+      Governed by OBP-COMMERCE.
+
+  - id: flow.delegate
+    definition: >
+      A delegation grant from a principal to an agent.
+      Governed by OBP-TRUST.
+
+  - id: flow.approval
+    definition: A decision gate requiring explicit authorization.
+
+  - id: flow.notification
+    definition: A signal delivered to a being for awareness or action.
+
+  # ── context ────────────────────────────────────────────────────────
+  - id: context.workspace
+    definition: >
+      The primary activity boundary of an organization or individual.
+      All data and flows exist within a workspace context.
+
+  - id: context.time.event
+    definition: >
+      A time-bounded occurrence with semantic significance
+      (meeting, deadline, fiscal period).
+
+  - id: context.market
+    definition: >
+      The semantic field in which commerce occurs —
+      the combination of participants, rules, and conditions.
+
+  - id: context.regulation
+    definition: >
+      A normative constraint imposed by law or policy on beings within its scope.
+
+  - id: context.sphere
+    definition: >
+      A dynamic cluster of beings whose alignment_vector has converged.
+      Formed by GRAVITY. Layered by social_distance (core/mantle/crust).

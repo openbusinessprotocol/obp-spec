@@ -1,0 +1,45 @@
+# OBP Semantic Alignment — Japan Profile
+# Japanese commercial conventions.
+# Extends global profile with Japan-specific overrides.
+# License: CC BY 4.0
+# Adopted: PROP-009 (2026-04-13, conditional)
+
+profile: ja
+_version: "ja@1.0"
+_overrides_hash: null
+extends: global
+locale: ja-JP
+
+overrides:
+  fiscal_year:
+    start_month: 4              # April through March (majority of JP corporations)
+    end_month: 3
+    reference: "Japanese Corporate Tax Act (individual companies may differ per articles)"
+    note: >
+      Some foreign-affiliated Japanese companies use January-December.
+      Workspace must override fiscal_year.start_month when this applies.
+
+  quarter:
+    q1: [Apr, May, Jun]
+    q2: [Jul, Aug, Sep]
+    q3: [Oct, Nov, Dec]
+    q4: [Jan, Feb, Mar]
+
+  week_start: sunday_or_monday
+    # Both Sunday and Monday are in common use in Japan.
+    # Workspace must select one. No default imposed.
+
+  accounting_ref: J-GAAP        # Accounting Standards Board of Japan (ASBJ)
+  tax_ref: "Consumption Tax Act / Corporate Tax Act"
+
+  fx_default: period_end_rate   # J-GAAP standard: period-end exchange rate for financial reporting
+
+  number_format: "1,234.56"
+    # Western decimal notation. Display typically appends currency symbol (e.g., ¥1,234)
+
+notes: >
+  Japan uses April-March as the standard fiscal year for most domestic corporations.
+  Foreign-affiliated companies often use January-December.
+  Workspace operators must declare their actual fiscal year in overrides when
+  it differs from the profile default.
+  week_start requires explicit workspace selection — no default is provided.

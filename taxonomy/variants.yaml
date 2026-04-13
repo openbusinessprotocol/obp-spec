@@ -1,0 +1,55 @@
+# OBP Taxonomy — Variants
+# Variants are sub-types of species. Notation: genus.species.variant
+# Variants change more frequently than species and can be proposed by the community.
+# License: CC BY 4.0
+# Adopted: PROP-006 (2026-04-13, conditional)
+
+version: "1.0"
+adopted: "2026-04-13"
+prop: "PROP-006"
+
+variants:
+
+  # ── flow.task ──────────────────────────────────────────────────────
+  - id: flow.task.recurring
+    definition: A task that repeats on a defined schedule.
+
+  - id: flow.task.milestone
+    definition: A task representing a significant project checkpoint.
+
+  - id: flow.task.subtask
+    definition: A task that is a component of a larger parent task.
+
+  # ── flow.content ───────────────────────────────────────────────────
+  - id: flow.content.draft
+    definition: A content item in authoring state, not yet published.
+
+  - id: flow.content.published
+    definition: A content item that has been released to an audience.
+
+  # ── flow.commerce ──────────────────────────────────────────────────
+  - id: flow.commerce.invoice
+    definition: The invoicing phase of a commerce flow.
+
+  - id: flow.commerce.payment
+    definition: The payment execution phase of a commerce flow.
+
+  - id: flow.commerce.contract
+    definition: The contract negotiation and signing phase.
+
+  # ── resource.document ──────────────────────────────────────────────
+  - id: resource.document.invoice
+    definition: A formal request for payment.
+
+  - id: resource.document.contract
+    definition: A binding agreement between two or more parties.
+
+  - id: resource.document.report
+    definition: A structured summary of findings or metrics.
+
+  # ── context.workspace ──────────────────────────────────────────────
+  - id: context.workspace.personal
+    definition: A workspace owned by a single individual (being.person).
+
+  - id: context.workspace.team
+    definition: A workspace shared by multiple beings within one organization.

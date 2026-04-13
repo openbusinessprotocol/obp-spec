@@ -1,0 +1,167 @@
+# OBP Counterparty Governance — Core Schema
+# Type definitions for counterparty (trading partner) governance.
+# This schema covers internationally applicable fields only.
+# Country-specific extensions are defined in profiles/{locale}/counterparty-governance-extension.yaml
+#
+# privacy_level values:
+#   private              — accessible to Owner only
+#   workspace_internal   — accessible to Workspace members
+#   counterparty_shared  — shared with the counterparty
+#
+# OBP defines the schema and reference sources only.
+# How values are stored or retrieved is the responsibility of the implementing platform.
+# License: CC BY 4.0
+# Adopted: PROP-011 (2026-04-13, conditional)
+
+version: "1.0"
+adopted: "2026-04-13"
+prop: "PROP-011"
+depends_on:
+  - OBP-SEMANTIC-ALIGNMENT   # profile mechanism for locale-specific extensions
+  - PROP-012                 # privacy_level maps to Authorization Primitive roles
+
+schema:
+
+  payment_cycle:
+    description: Payment timing terms with this counterparty.
+    fields:
+      invoice_cut_off_day:
+        type: "integer | 'end'"
+        description: >
+          The day of the month by which invoices must be received to be
+          included in the current payment cycle.
+          Use integer (1-31) or "end" for end-of-month.
+        privacy_level: workspace_internal
+
+      payment_day:
+        type: "integer | 'end'"
+        description: >
+          The day of the payment month on which payment is made.
+          Use integer (1-31) or "end" for end-of-month.
+        privacy_level: workspace_internal
+
+      payment_month_lag:
+        type: integer
+        description: >
+          Number of months after the invoice cut-off month in which payment is made.
+          1 = next month, 2 = month after next.
+        privacy_level: workspace_internal
+
+      reference:
+        type: string
+        description: >
+          The basis for these terms: contract, master agreement, or established practice.
+        privacy_level: workspace_internal
+
+  document_flow:
+    description: Which party issues which documents in the transaction.
+    fields:
+      invoice_issuer:
+        type: "'seller' | 'buyer' | 'none'"
+        description: >
+          Which party issues the invoice.
+          "none" = only a payment advice is used (no formal invoice).
+        privacy_level: counterparty_shared
+
+      payment_advice_issuer:
+        type: "'buyer' | 'seller' | 'none'"
+        description: Which party issues the payment advice (remittance notification).
+        privacy_level: counterparty_shared
+
+  tax:
+    description: Tax-related governance for this counterparty.
+    fields:
+      tax_treatment:
+        type: "'inclusive' | 'exclusive'"
+        description: >
+          Whether transaction amounts are stated tax-inclusive or tax-exclusive.
+        privacy_level: counterparty_shared
+
+      tax_id_type:
+        type: "string | null"
+        description: >
+          Type of tax identification number held for this counterparty.
+          Locale-specific values are defined in profile extensions
+          (e.g., "ein" for US, "utr" for UK).
+          Reference: applicable national tax law.
+        privacy_level: workspace_internal
+
+      tax_id_collected:
+        type: boolean
+        description: >
+          Whether the tax identification number has been collected.
+          The number itself is managed by an external compliance system.
+        privacy_level: workspace_internal
+
+  fees:
+    description: Fee allocation between parties.
+    fields:
+      transfer_fee_bearer:
+        type: "'sender' | 'receiver' | 'split'"
+        description: >
+          Which party bears the cost of the bank transfer fee.
+          Locale-specific variants (e.g., sender_deduct in Japan)
+          are defined in profile extensions.
+        privacy_level: workspace_internal
+
+  withholding:
+    description: Withholding tax governance.
+    fields:
+      applicable:
+        type: boolean
+        description: >
+          Whether withholding tax applies to transactions with this counterparty.
+          Typically true for payments to individuals or specific entity types.
+        privacy_level: workspace_internal
+
+      rate:
+        type: "decimal | null"
+        description: >
+          The withholding rate as a decimal (e.g., 0.10 for 10%).
+          The rate value is defined by applicable national tax law —
+          OBP records the value but does not define it.
+          Reference: national income tax law / withholding tax regulations.
+        privacy_level: workspace_internal
+
+      declaration_required:
+        type: boolean
+        description: Whether a withholding tax declaration must be filed.
+        privacy_level: workspace_internal
+
+  regulatory_compliance:
+    description: Compliance status for KYC and tax identification.
+    fields:
+      kyc_status:
+        type: "'not_required' | 'pending' | 'completed' | 'expired'"
+        description: >
+          Know-Your-Customer verification status.
+          The actual KYC data is managed by an external compliance system.
+          Reference: national AML regulations / FATF recommendations.
+        privacy_level: workspace_internal
+
+      kyc_verified_at:
+        type: "ISO8601 | null"
+        description: Timestamp of KYC completion. Used for expiry management.
+        privacy_level: workspace_internal
+
+override_hierarchy:
+  description: >
+    OBP defines the structure of governance overrides.
+    How overrides are stored and retrieved is the platform's responsibility.
+  levels:
+    - level: counterparty_default
+      description: Default governance terms for all transactions with this counterparty.
+      scope: All transactions with the counterparty.
+    - level: contract_override
+      description: >
+        Terms for a specific contract that differ from the counterparty default.
+        Example: normally net-30, but this project is net-45 after acceptance.
+      scope: All transactions under the referenced contract.
+    - level: transaction_override
+      description: >
+        Terms for a single transaction that differ from the contract or counterparty default.
+        Example: this invoice only, split into two installments.
+      scope: Single transaction.
+  principle: >
+    Agents apply the most narrow scope available.
+    transaction_override > contract_override > counterparty_default.

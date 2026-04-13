@@ -1,0 +1,102 @@
+# OBP Semantic Alignment — Profile Schema
+# Defines the structure of a Semantic Alignment Profile.
+# All OBP-compliant systems declare a profile to ensure consistent interpretation
+# of units, dates, currencies, and numeric conventions.
+# License: CC BY 4.0
+# Adopted: PROP-009 (2026-04-13, conditional)
+
+version: "1.0"
+adopted: "2026-04-13"
+prop: "PROP-009"
+
+schema:
+  profile:
+    type: string
+    required: true
+    description: >
+      Profile identifier. Built-in: global | us | ja.
+      Custom profiles must extend a built-in profile.
+
+  _version:
+    type: string
+    required: true
+    description: >
+      Version identifier of this profile snapshot.
+      Format: "{profile_id}@{version}" (e.g., "global@1.0", "ja@2026-04").
+      Used by receiving systems to verify semantic alignment during data exchange.
+
+  _overrides_hash:
+    type: string
+    nullable: true
+    required: true
+    description: >
+      SHA-256 short hash of any workspace-level overrides applied to this profile.
+      null = pure profile with no overrides.
+      non-null = "sha256:{8-char-prefix}" (e.g., "sha256:a3f2b1c9").
+      When non-null, the sender must make override details available to the receiver.
+      If the receiver cannot interpret the overrides, it must treat the exchange as
+      a conversion error rather than silently applying the wrong interpretation.
+
+  extends:
+    type: string
+    nullable: true
+    description: >
+      Parent profile to inherit from. Only custom profiles use this field.
+      Built-in profiles (global, us, ja) do not have a parent.
+
+  locale:
+    type: string
+    nullable: true
+    description: IETF BCP 47 locale tag (e.g., en-US, ja-JP).
+
+  references:
+    type: object
+    description: Mapping of domain to the authoritative external standard.
+    properties:
+      temporal:
+        type: string
+        description: Date/time format standard (default: ISO 8601)
+      currency:
+        type: string
+        description: Currency code standard (default: ISO 4217)
+      country:
+        type: string
+        description: Country code standard (default: ISO 3166-1 alpha-2)
+      locale_tag:
+        type: string
+        description: Language tag standard (default: IETF BCP 47)
+
+  conventions:
+    type: object
+    description: Semantic conventions that vary by locale or region.
+    properties:
+      fiscal_year:
+        type: string | object
+        description: >
+          Fiscal year definition. "calendar_year" or an object with
+          start_month / end_month / reference.
+      quarter:
+        type: array | object
+        description: >
+          Quarter-to-month mapping. Array of 4 month-ranges for simple cases,
+          or an object with q1/q2/q3/q4 keys.
+      week_start:
+        type: string
+        enum: [monday, sunday, sunday_or_monday]
+        description: First day of the week for this locale.
+      fx_default:
+        type: string
+        description: Default foreign exchange rate convention (e.g., spot_rate, period_end_rate).
+      accounting_ref:
+        type: string
+        description: Accounting standard reference (e.g., US-GAAP, IFRS, J-GAAP).
+      tax_ref:
+        type: string
+        description: Primary tax authority reference.
+
+  overrides:
+    type: object
+    nullable: true
+    description: >
+      Workspace-level field overrides. Keys mirror the conventions structure.
+      When present, _overrides_hash must be non-null.

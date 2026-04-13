@@ -1,0 +1,65 @@
+# OBP Taxonomy — Genera (Root Classification)
+# SSOT for the four fundamental genera of OBP.
+# These correspond directly to the Four Bases of OBP and are immutable.
+# Changes require a formal PROP to the OBP Specification Committee.
+# License: CC BY 4.0
+# Adopted: PROP-006 (2026-04-13, conditional)
+
+version: "1.0"
+adopted: "2026-04-13"
+prop: "PROP-006"
+
+genera:
+  - id: being
+    symbol: A
+    dimension: WHO
+    definition: >
+      An entity with presence, will, and the capacity for self-configuration,
+      coordination, and reflection. The sole genus that exercises Sovereignty.
+      Encompasses humans, AI agents, and organizations equally.
+    key_properties:
+      - sovereignty_holder: true
+      - can_configure: true
+      - can_delegate: true
+      - internal_state_opaque: true
+    notes: >
+      being.* exists only in the OBP philosophical layer.
+      World Filters must inherit and instantiate it in their own context
+      (e.g., Flapbase implements being.* as agent.*).
+
+  - id: resource
+    symbol: T
+    dimension: WHAT
+    definition: >
+      Any value unit that a being can operate upon: matter, information,
+      rights, relationships. Without being's attribution of meaning,
+      resource is merely an atom.
+    key_properties:
+      - operable_by: being
+      - transferable: true
+      - persistent: true
+
+  - id: flow
+    symbol: G
+    dimension: HOW_WHEN
+    definition: >
+      A structured description of action along a time axis.
+      Flow cannot escape context — a flow without context loses direction
+      and dissipates.
+    key_properties:
+      - time_bound: true
+      - context_dependent: true
+      - produces: [resource, effect]
+
+  - id: context
+    symbol: C
+    dimension: WHERE_WHY
+    definition: >
+      The semantic field that forms the background of action:
+      place, market, purpose, regulation, emotion.
+      WHERE and WHY are inseparable — a market (where) and a purpose (why)
+      are co-defined.
+    key_properties:
+      - immutable_layer_exists: true
+      - child_cannot_override_parent: true
+      - accumulative_merge: true

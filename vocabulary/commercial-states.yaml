@@ -1,0 +1,159 @@
+# OBP Commercial State Vocabulary
+# First-class vocabulary definitions for universal commerce states.
+# These six terms appear across all commerce namespaces and must carry
+# consistent meaning to enable agents to interpret business queries accurately.
+# License: CC BY 4.0
+# Adopted: PROP-010 (2026-04-13, conditional)
+
+version: "1.0"
+adopted: "2026-04-13"
+prop: "PROP-010"
+
+vocabulary:
+
+  net:
+    type: numeric_modifier
+    definition: >
+      A value after specified deductions have been subtracted from gross.
+    direction: after_deductions
+    antonym: gross
+    qualifier_syntax: "net({what})"
+    qualifiers:
+      net(tax):
+        definition: Value after tax has been deducted.
+      net(return):
+        definition: Value after returned goods have been subtracted.
+      net(fee):
+        definition: Value after transaction fees have been deducted.
+      net(discount):
+        definition: Value after discounts have been applied.
+    usage_note: >
+      Unqualified "net" is context-dependent and ambiguous.
+      In agent-to-agent communication and automated aggregation,
+      qualified form (e.g., net(tax), net(return)) is strongly recommended.
+      The qualifier resolves which deductions are applied; the deduction
+      values themselves are defined by the workspace's semantic profile
+      (see OBP-SEMANTIC-ALIGNMENT).
+
+  gross:
+    type: numeric_modifier
+    definition: >
+      A value before any deductions — before returns, cancellations,
+      discounts, fees, or tax.
+    direction: before_deductions
+    antonym: net
+    qualifier_syntax: "gross({what})"
+    qualifiers:
+      gross(revenue):
+        definition: Total sales amount before any deductions.
+      gross(margin):
+        definition: Revenue before cost-of-goods deduction.
+    usage_note: >
+      "gross" anchors the calculation baseline.
+      net({x}) = gross - {x deductions}.
+
+  return:
+    type: transaction_event
+    definition: >
+      The event in which a purchased physical or digital good is sent back
+      to the seller by the buyer after delivery.
+    triggers:
+      - refund
+      - inventory_restoration
+    distinct_from: cancelled
+    distinction_note: >
+      A return implies the goods were shipped and received (delivered state).
+      A cancellation occurs before delivery.
+    namespace_refs:
+      - flow.commerce
+      - resource.matter (physical goods)
+      - resource.document (digital goods)
+
+  refund:
+    type: financial_event
+    definition: >
+      The event in which all or part of a paid amount is returned to the buyer.
+    triggers:
+      - return
+      - cancelled
+      - dispute_resolution
+      - policy_decision
+    distinct_from: return
+    distinction_note: >
+      A refund is a monetary movement.
+      A return is a physical or digital goods movement.
+      A return typically triggers a refund, but a refund can also
+      occur without a return (e.g., goodwill refund, dispute resolution).
+    namespace_refs:
+      - flow.commerce.payment
+
+  cancelled:
+    type: transaction_state
+    definition: >
+      The state in which a transaction, order, or reservation has been
+      invalidated before execution is complete.
+    distinct_from: return
+    distinction_note: >
+      Cancelled applies before delivery. If goods have already been
+      shipped or delivered, use "return" instead.
+    namespace_refs:
+      - flow.commerce
+      - flow.approval
+      - flow.schedule
+
+  delivered:
+    type: fulfillment_state
+    definition: >
+      The state in which goods, services, or digital outputs have
+      reached the recipient.
+    applies_to:
+      - Physical shipment (resource.matter)
+      - Digital delivery (resource.document)
+      - Service completion (flow.commerce)
+    namespace_refs:
+      - flow.commerce
+      - resource.matter
+
+state_transitions:
+  description: >
+    Canonical transition diagram showing the relationship between states.
+  transitions:
+    - from: order_placed
+      to: cancelled
+      condition: Cancelled before shipment
+    - from: order_placed
+      to: delivered
+      via: shipped
+      condition: Normal fulfillment
+    - from: delivered
+      to: return
+      condition: Buyer initiates return
+    - from: return
+      to: refund
+      condition: Return accepted by seller
+    - from: delivered
+      to: refund
+      via: dispute_resolution
+      condition: Dispute resolved in buyer's favor
+    - from: order_placed
+      to: refund
+      via: cancelled
+      condition: Cancellation after payment
+
+numeric_relationships:
+  gross_revenue: "sum of all delivered transaction amounts"
+  net_return_revenue: "gross_revenue - sum(returned)"
+  net_tax_revenue: "gross_revenue - tax_amount"
+  note: >
+    Qualifier composition is allowed:
+    net(tax, return) = gross_revenue - tax_amount - sum(returned)
+
+scope_boundary:
+  in_scope:
+    - Vocabulary definitions for the six listed terms
+    - Qualifier syntax for net and gross
+    - State transition relationships
+  out_of_scope:
+    - Entity type promotion (_v.return / _v.refund as first-class records) — separate PROP required
+    - Failure states (failed, disputed, void) — future PROP or community extension
+    - Industry-specific vocabulary (chargeback, writeoff, credit_note) — implementor extension

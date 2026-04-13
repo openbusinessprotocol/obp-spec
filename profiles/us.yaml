@@ -1,0 +1,25 @@
+# OBP Semantic Alignment — US Profile
+# United States commercial conventions.
+# Extends global profile with US-specific overrides.
+# License: CC BY 4.0
+# Adopted: PROP-009 (2026-04-13, conditional)
+
+profile: us
+_version: "us@1.0"
+_overrides_hash: null
+extends: global
+locale: en-US
+
+overrides:
+  week_start: sunday            # US convention: week begins Sunday
+  fiscal_year: calendar_year    # Federal: Oct-Sep, but most corporations use Jan-Dec
+                                # Note: individual corporations may differ per bylaws.
+  accounting_ref: US-GAAP       # Financial Accounting Standards Board (FASB)
+  tax_ref: IRS                  # Internal Revenue Service
+
+notes: >
+  The US fiscal year for federal government is October through September,
+  but the majority of US corporations use the calendar year or a custom
+  year defined in their corporate charter. When exchanging fiscal data,
+  receiving systems should verify the sender's actual fiscal year against
+  their declared profile overrides.

@@ -1,0 +1,33 @@
+# OBP Semantic Alignment — Global Profile
+# The baseline profile. Applies international standards without regional customization.
+# All other built-in profiles extend this profile.
+# License: CC BY 4.0
+# Adopted: PROP-009 (2026-04-13, conditional)
+
+profile: global
+_version: "global@1.0"
+_overrides_hash: null
+
+references:
+  temporal: ISO 8601            # YYYY-MM-DDTHH:mm:ssZ
+  currency: ISO 4217            # 3-letter currency codes (USD, EUR, JPY)
+  country: ISO 3166-1 alpha-2   # 2-letter country codes (US, JP, GB)
+  locale_tag: IETF BCP 47       # Language tags (en, ja, zh-CN)
+  physical_units: SI / ISO 80000  # kg, m, K, etc.
+  number_format: ISO 31-0 / CLDR
+
+conventions:
+  fiscal_year: calendar_year    # January through December
+  quarter:
+    q1: [Jan, Feb, Mar]
+    q2: [Apr, May, Jun]
+    q3: [Jul, Aug, Sep]
+    q4: [Oct, Nov, Dec]
+  week_start: monday
+  fx_default: spot_rate
+  number_format: "1,234.56"     # Thousands separator comma, decimal point
+
+notes: >
+  This profile applies no regional conventions beyond international standards.
+  Use this profile for international data exchange when no locale-specific
+  interpretation is required. All other built-in profiles extend global.
