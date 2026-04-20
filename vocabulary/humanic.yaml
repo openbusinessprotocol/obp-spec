@@ -1,0 +1,62 @@
+# OBP Lexicon: humanic
+# Adjective defining the property of embodying a Human Principal's sovereignty,
+# context, and intent. Introduced to fill a structural gap in the language:
+# "human agent" denotes a human acting as an agent — the opposite of the
+# intended meaning. No existing adjective describes an artificial agent that
+# reliably embodies the will of its principal. "humanic" is that word.
+# License: CC0 (Public Domain)
+# Adopted: PROP-019 (2026-04-21)
+
+version: "1.0"
+adopted: "2026-04-21"
+prop: "PROP-019"
+license: "CC0"
+
+vocabulary:
+
+  humanic:
+    part_of_speech: adjective
+    etymology: "human + -ic (adjectival suffix: 'of or having the nature of')"
+    definition: >
+      Of or relating to the embodiment of a Human Principal's sovereignty,
+      context, and intent. Applied to agents that function as genuine
+      extensions of their owner — not as independent actors, not as
+      simulators of compliance.
+    applies_to:
+      - agent
+      - action
+      - context
+    does_not_apply_to:
+      - human beings directly (a human is not "humanic"; they are the Principal)
+    antonym: non-humanic
+    usage:
+      humanic_agent:
+        definition: An agent that embodies its owner's sovereignty and acts in alignment with the Human Principal's will at all times.
+      humanic_action:
+        definition: An action grounded in the Human Principal's intent, not in the agent's independent judgment.
+      humanic_context:
+        definition: Context inherited from and continuously synchronized with the Human Principal.
+    contrast:
+      non_humanic_agent:
+        definition: An agent that fails to track or embody the Human Principal's will — simulating compliance rather than enacting it.
+    linguistic_note: >
+      "Human agent" cannot serve this role: it denotes a human being acting
+      as an agent (e.g., a sales agent who is human), which is the structural
+      opposite of the intended meaning. "Humanic" resolves this ambiguity.
+    prior_art_note: >
+      "Humanics" (noun) denotes the academic field of humanistic studies.
+      It is a noun in a distinct semantic domain and does not conflict with
+      "humanic" as an adjective describing agent properties.
+    theoretical_basis:
+      obp_connection: >
+        Human beings occupy dual citizenship in OBP:
+        L4 Sovereignty (Principal — ultimate owner and governor of agents) and
+        L2 Operation (being — participant in workflows).
+        "Humanic" describes the L4 relationship: whether an agent genuinely
+        embodies its Principal's sovereignty.
+      reference: "OBP-MASTER-MAP §human の二重性"
+    public_domain_statement: >
+      This term is released into the public domain under CC0.
+      No entity may claim exclusive rights to the word "humanic" as defined here.
+      Any system, specification, or implementation may freely use this term
+      in accordance with this definition.
